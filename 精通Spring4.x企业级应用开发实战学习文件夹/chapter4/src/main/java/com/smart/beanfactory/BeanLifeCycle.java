@@ -12,7 +12,7 @@ import org.springframework.core.io.Resource;
  * @Package: com.smart.beanfactory
  * @ClassName: BeanLifeCycle
  * @Author: yuxingsheng
- * @Description: 装载配置文件。注册后处理器
+ * @Description: 装载配置文件。注册后处理器 可以参考 学习：https://blog.csdn.net/qq_38526573/article/details/88091702#comments_13252421
  * @Date: 2020/9/14 17:19
  * @Version: 1.0
  */

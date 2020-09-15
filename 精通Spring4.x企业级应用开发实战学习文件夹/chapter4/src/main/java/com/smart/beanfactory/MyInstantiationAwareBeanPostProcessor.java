@@ -30,10 +30,13 @@ public class MyInstantiationAwareBeanPostProcessor extends InstantiationAwareBea
     public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
         //仅对Car类型的bean做处理
         // 利用cglib动态代理生成对象返回
-        System.out.println("postProcessBeforeInstantiation");
+        /*System.out.println("postProcessBeforeInstantiation");
         if(beanClass == Car.class){
+            //CGLIB enhancer 增强类对象
             Enhancer enhancer=new Enhancer();
+            //／设置增强类型
             enhancer.setSuperclass(beanClass);
+            //定义代理逻辑对象为当前对象，要求当前对象实现 Methodinterceptor 方法
             enhancer.setCallback(new MethodInterceptor() {
                 public Object intercept(Object obj, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
                     System.out.println("目标方法执行前："+method+"\n");
@@ -44,11 +47,11 @@ public class MyInstantiationAwareBeanPostProcessor extends InstantiationAwareBea
             });
             Car car= (Car)enhancer.create();
             return car;
-        }
-        /*if("car".equals(beanName)){
+        }*/
+        if("car".equals(beanName)){
             System.out.println("postProcessBeforeInstantiation  继承自InstantiationAwareBeanPostProcessor的接口");
             return null;
-        }*/
+        }
         return null;
     }
     /**在bean被实例化之后调用 是InstantiationAwareBeanPostProcessor的接口*/
