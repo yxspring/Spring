@@ -21,9 +21,8 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         if("car".equals(beanName)){
             Car car=(Car)bean;
-            System.out.println("在Bean的自定义初始化方法之前执行,继承自BeanPostProcessor接口中方法,查看一下bean的属性是不是都为空啊？");
-            System.out.println("========"+beanName+"---->"+bean.toString());
-            System.out.println("========"+beanName+"---->"+car.toString());
+            System.out.println("postProcessBeforeInitialization  查看一下bean的属性是不是都为空啊？");
+            System.out.println("========"+beanName+"的属性---->"+bean.toString());
             car.setColor("黑色");
         }
         return bean;
@@ -32,12 +31,10 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         if("car".equals(beanName)){
             Car car=(Car)bean;
-            System.out.println("在bean的自定义初始化方法执行之后执行，继承自BeanPostProcessor接口中的方法");
+            System.out.println("postProcessAfterInitialization ");
             if(car.getMaxSpeed()>=200){
                 car.setMaxSpeed(200);
             }
-            System.out.println("========"+beanName+"---->"+bean.toString());
-            System.out.println("========"+beanName+"---->"+car.toString());
         }
         return bean;
     }
