@@ -20,8 +20,5 @@ public class BeforeAdviceXmlTest {
         ApplicationContext ctx=new ClassPathXmlApplicationContext(configPath);
         Waiter waiter=(Waiter)ctx.getBean("waiter");
         waiter.serveTo("yuxs");
-
-        Waiter waiter2=(Waiter)ctx.getBean("waiter2");
-        waiter.greetTo("yuxs");
     }
 }

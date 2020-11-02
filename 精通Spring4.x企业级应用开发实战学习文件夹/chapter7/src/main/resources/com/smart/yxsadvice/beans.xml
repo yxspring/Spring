@@ -4,14 +4,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
      http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 	<bean id="greetingBeforeMethod" class="com.smart.yxsadvice.GreetingBeforeMethod" />
+	<bean id="greetingAfterMethod" class="com.smart.yxsadvice.GreetingAfterMethod"/>
 	<bean id="target" class="com.smart.yxsadvice.NativeWaiter"/>
 	<bean id="waiter" class="org.springframework.aop.framework.ProxyFactoryBean"
 	p:proxyInterfaces="com.smart.yxsadvice.Waiter"
-	p:interceptorNames="greetingBeforeMethod" p:target-ref="target"/>
-
-	<bean id="waiter2" class="org.springframework.aop.framework.ProxyFactoryBean"
-		  p:interceptorNames="greetingBeforeMethod" p:target-ref="target"
-		  p:proxyTargetClass="true"
-	/>
+	p:interceptorNames="greetingBeforeMethod,greetingAfterMethod" p:target-ref="target"/>
 
 </beans>

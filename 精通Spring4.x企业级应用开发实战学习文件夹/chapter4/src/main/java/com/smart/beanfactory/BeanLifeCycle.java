@@ -6,6 +6,10 @@ import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternResolver;
+
+import java.io.IOException;
 
 /**
  * @ProjectName: chapter4
@@ -17,10 +21,14 @@ import org.springframework.core.io.Resource;
  * @Version: 1.0
  */
 public class BeanLifeCycle {
-    private static void lifeCycleInBeanFactory(){
+    private static void lifeCycleInBeanFactory() {
         /**
          * 装载配置文件并启动容器
          * */
+        ResourcePatternResolver resolver =new PathMatchingResourcePatternResolver();
+        Resource res1=resolver.getResource("");
+     new DefaultListableBeanFactory();
+     new XmlBeanDefinitionReader(new DefaultListableBeanFactory());
         Resource res=new   ClassPathResource("com/smart/beanfactory/beans.xml");
         BeanFactory bf=new DefaultListableBeanFactory();
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader((DefaultListableBeanFactory)bf);
